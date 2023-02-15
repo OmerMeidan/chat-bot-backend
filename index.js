@@ -17,9 +17,9 @@ const app = express();
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
-//user commands
+//question commands
 app.post("/Register", UserController.register);
 app.post("/Question", QuestionController.register);
-// app.post("/Login", AuthController.Login);
+app.get("/QuestionList", QuestionController.questionlist);
 
 app.listen(8000, () => console.log("Listening on port 8000"));
