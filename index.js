@@ -1,13 +1,11 @@
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
+require("dotenv").config();
 const UserController = require("./Controllers/UserController.js");
 const QuestionController = require("./Controllers/QuestionController.js");
 mongoose
-  .connect(
-    "mongodb+srv://Markdb:mark1234@cluster0.5bb5gfo.mongodb.net/Bot?retryWrites=true&w=majority",
-    {}
-  )
+  .connect(process.env.REACT_apiKey, {})
   .then(() => console.log("FUCKING conncection to database is ONLINE"))
   .catch((error) => {
     console.log("error did not connect to database  FUCK");
