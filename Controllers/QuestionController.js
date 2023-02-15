@@ -14,3 +14,15 @@ exports.register = async (req, res) => {
     }
   });
 };
+
+exports.questionlist = async (req, res) => {
+  question.find().then((qlist) => {
+    if (!qlist) {
+      res.send(error + "  " + "fuck you");
+      res.status(400);
+    } else {
+      console.log("this is ", qlist);
+      res.status(200).json({ qlist });
+    }
+  });
+};
