@@ -6,9 +6,9 @@ const UserController = require("./Controllers/UserController.js");
 const QuestionController = require("./Controllers/QuestionController.js");
 mongoose
   .connect(process.env.REACT_apiKey, {})
-  .then(() => console.log("FUCKING conncection to database is ONLINE"))
+  .then(() => console.log("conncection to database is ONLINE"))
   .catch((error) => {
-    console.log("error did not connect to database  FUCK");
+    console.log("error did not connect to database");
     console.log(error);
   });
 
@@ -17,9 +17,16 @@ const app = express();
 app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
-//question commands
+//register user
 app.post("/Register", UserController.register);
+//get userlist
+app.post("/UserList", UserController.userList);
+//addone question
 app.post("/Question", QuestionController.register);
+//get all
 app.get("/QuestionList", QuestionController.questionlist);
-
+//get by language
+app.get("/QuestionListLanguage", QuestionController.questionlistlanguage);
+//
+app.post("/UpdateAnswers", UserController.updateAnswers);
 app.listen(8000, () => console.log("Listening on port 8000"));

@@ -16,5 +16,8 @@ const userSchema = new mongoose.Schema({
   Gender: {
     type: String,
   },
+  Answers: {
+    type: Array,
+  },
 });
 module.exports = mongoose.model("userList", userSchema);
