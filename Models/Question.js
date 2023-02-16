@@ -9,5 +9,8 @@ const questioneSchema = new mongoose.Schema({
   Language: {
     type: String,
   },
+  Place: {
+    type: Number,
+  },
 });
 module.exports = mongoose.model("questionList", questioneSchema);

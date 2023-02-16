@@ -14,3 +14,26 @@ exports.register = async (req, res) => {
     }
   });
 };
+
+exports.questionlist = async (req, res) => {
+  question.find().then((qlist) => {
+    if (!qlist) {
+      res.send(error);
+      res.status(400);
+    } else {
+      console.log("this is ", qlist);
+      res.status(200).json({ qlist });
+    }
+  });
+};
+exports.questionlistlanguage = async (req, res) => {
+  question.find({ Language: req.body.Language }).then((qlist) => {
+    if (!qlist) {
+      res.send(error);
+      res.status(400);
+    } else {
+      console.log("this is ", qlist);
+      res.status(200).json({ qlist });
+    }
+  });
+};
