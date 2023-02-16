@@ -18,7 +18,7 @@ exports.register = async (req, res) => {
 exports.updatestat = async (req, res) => {
   Stat.findOneAndUpdate(
     { Answer: req.body.Answer },
-    { $inc: { Counter: 1 } }
+    { $inc: { Counter: req.body.num } }
   ).then((stat) => {
     if (!stat) {
       res.send(error);
