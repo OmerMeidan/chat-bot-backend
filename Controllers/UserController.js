@@ -15,17 +15,6 @@ exports.register = async (req, res) => {
   });
 };
 
-exports.analytics = async (req, res) => {
-  User.find({ Answers: req.body.Language }).then((qlist) => {
-    if (!qlist) {
-      res.send(error);
-      res.status(400);
-    } else {
-      console.log("this is ", qlist);
-      res.status(200).json({ qlist });
-    }
-  });
-};
 exports.userList = async (req, res) => {
   User.find().then((userlist) => {
     if (!userlist) {
@@ -33,7 +22,7 @@ exports.userList = async (req, res) => {
       res.status(400);
     } else {
       console.log("this is ", userlist);
-      res.status(200).json({ userlist });
+      res.status(200).send(userlist);
     }
   });
 };

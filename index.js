@@ -20,7 +20,7 @@ app.use(express.json());
 //register user
 app.post("/Register", UserController.register);
 //get userlist
-app.post("/UserList", UserController.userList);
+app.get("/UserList", UserController.userList);
 //addone question
 app.post("/Question", QuestionController.register);
 //get all
@@ -29,4 +29,5 @@ app.get("/QuestionList", QuestionController.questionlist);
 app.get("/QuestionListLanguage", QuestionController.questionlistlanguage);
 //
 app.post("/UpdateAnswers", UserController.updateAnswers);
+
 app.listen(8000, () => console.log("Listening on port 8000"));
