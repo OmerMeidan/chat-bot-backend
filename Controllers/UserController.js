@@ -28,16 +28,17 @@ exports.userList = async (req, res) => {
 };
 
 exports.updateAnswers = async (req, res) => {
-  User.findByIdAndUpdate(
-    { _id: req.body.id },
-    { Answers: req.body.Answers }
-  ).then((newarr) => {
-    if (!newarr) {
-      res.send(error);
-      res.status(400);
-    } else {
-      console.log("this is ", newarr);
-      res.status(200).json({ messege: "Updated the Answers!" });
-    }
-  });
+  try{
+     const user =  await User.findByIdAndUpdate({ _id: req.body._id },{ Answers: req.body.Answers })
+     if(user){
+      res.status(200).send(user)
+     } else {
+      res.status(404).send('error')
+     }
+
+  }catch(err){
+    res.status(500).send('Something went wrong')
+  }
+  
 };
+
