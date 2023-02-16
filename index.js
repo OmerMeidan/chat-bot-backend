@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 require("dotenv").config();
 const UserController = require("./Controllers/UserController.js");
 const QuestionController = require("./Controllers/QuestionController.js");
+const StatController = require("./Controllers/StatController");
 mongoose
   .connect(process.env.REACT_apiKey, {})
   .then(() => console.log("conncection to database is ONLINE"))
@@ -29,5 +30,9 @@ app.get("/QuestionList", QuestionController.questionlist);
 app.get("/QuestionListLanguage", QuestionController.questionlistlanguage);
 //
 app.post("/UpdateAnswers", UserController.updateAnswers);
+
+app.post("/Stat", StatController.register);
+app.post("/UpdateCounter", StatController.updatestat);
+app.get("/Getallstats", StatController.getstats);
 
 app.listen(8000, () => console.log("Listening on port 8000"));
